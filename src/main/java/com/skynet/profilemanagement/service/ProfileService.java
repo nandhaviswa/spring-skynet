@@ -33,11 +33,11 @@ public class ProfileService {
         List<Profile> profileList = jdbcTemplate.query(sql, params, this::mapRow);
         return profileList;
     }
-    public Profile mapRow(ResultSet rs, int row){
+    public Profile mapRow(ResultSet resultSet, int row){
         try {
             Profile profile = new Profile();
-            profile.setId(1);
-            profile.setName("nandha");
+            profile.setId(resultSet.getInt("id"));
+            profile.setName(resultSet.getString("name"));
 
             List<ProfileDetail> profileDetailList = profileDetailService.findAllByProfileId(profile.getId());
             profile.setProfileDetails(profileDetailList);
