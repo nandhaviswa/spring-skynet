@@ -48,38 +48,38 @@ docker rm jdbc-mysql
 ### api
 
 #### request
-GET /getProfileDetails?ProfileId=1 HTTP/1.1
+	GET /getProfileDetails?ProfileId=1 HTTP/1.1
 
 #### response
 
-HTTP/1.1 200 OK
-Content-Type: application/json
+	HTTP/1.1 200 OK
+	Content-Type: application/json
 
-[{
-	"id": 1,
-	"name": "nandha",
-	"profileDetails": [{
-		"otherDetails": "nandha detail 1"
+	[{
+		"id": 1,
+		"name": "nandha",
+		"profileDetails": [{
+			"otherDetails": "nandha detail 1"
+		}, {
+			"otherDetails": "nandha detail 2"
+		}]
 	}, {
-		"otherDetails": "nandha detail 2"
+		"id": 2,
+		"name": "kumar",
+		"profileDetails": []
+	}, {
+		"id": 3,
+		"name": "viswa",
+		"profileDetails": [{
+			"otherDetails": "viswa detail 1"
+		}]
 	}]
-}, {
-	"id": 2,
-	"name": "kumar",
-	"profileDetails": []
-}, {
-	"id": 3,
-	"name": "viswa",
-	"profileDetails": [{
-		"otherDetails": "viswa detail 1"
-	}]
-}]
 
 ### sample URLs
 
-http://127.0.0.1:8080/getProfileDetails?ProfileId=1
-http://127.0.0.1:8080/getProfileDetails?ProfileId=2
-http://127.0.0.1:8080/getProfileDetails?ProfileId=3
-http://127.0.0.1:8080/getProfileDetails?ProfileId=7
-http://127.0.0.1:8080/getProfileDetails
-http://127.0.0.1:8080/getProfileDetails?ProfileId=
+- http://127.0.0.1:8080/getProfileDetails?ProfileId=1
+- http://127.0.0.1:8080/getProfileDetails?ProfileId=2
+- http://127.0.0.1:8080/getProfileDetails?ProfileId=3
+- http://127.0.0.1:8080/getProfileDetails?ProfileId=7
+- http://127.0.0.1:8080/getProfileDetails
+- http://127.0.0.1:8080/getProfileDetails?ProfileId=
