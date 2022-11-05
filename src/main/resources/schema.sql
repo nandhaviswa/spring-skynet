@@ -1,3 +1,14 @@
+/* ** Root ** */
+DROP DATABASE IF EXISTS `profilemanager`;
+CREATE DATABASE `profilemanager`;
+
+DROP USER IF EXISTS 'profilemanager'@'%';
+CREATE USER 'profilemanager'@'%' IDENTIFIED WITH mysql_native_password BY 'profilemanager';
+GRANT ALL PRIVILEGES ON *.* TO 'profilemanager'@'%' WITH GRANT OPTION;
+
+/* ** Application User ** */
+USE profilemanager;
+
 DROP TABLE IF EXISTS `profile`;
 
 CREATE TABLE `profile` (
