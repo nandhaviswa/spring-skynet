@@ -18,7 +18,7 @@ public class ProfileController {
 
     @GetMapping("/getProfileDetails")
     public List<Profile> getProfileDetails(@RequestParam(name="ProfileId", required = false) String profileId){
-        List<Profile> profileList = profileService.findAllById();
+        List<Profile> profileList = profileService.findAllById(profileId);
         return profileList;
     }
     
