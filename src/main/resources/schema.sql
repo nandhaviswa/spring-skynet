@@ -16,6 +16,7 @@ CREATE TABLE `profile` (
 	`name` varchar(255) NOT NULL
 );
 
+# seeders
 INSERT INTO `profile` (`id`, `name`) VALUES (1,	'nandha'), (2,	'kumar'), (3,	'viswa');
 
 DROP TABLE IF EXISTS `profile_detail`;
@@ -27,4 +28,5 @@ CREATE TABLE `profile_detail` (
 	FOREIGN KEY (profileId) REFERENCES profile(id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
+# seeders
 INSERT INTO `profile_detail` (`profileId`, `otherDetails`) VALUES (1, 'nandha detail 1'), (1, 'nandha detail 2'), (3, 'viswa detail 1');
