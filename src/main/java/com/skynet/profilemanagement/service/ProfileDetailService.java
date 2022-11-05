@@ -28,8 +28,8 @@ public class ProfileDetailService {
     public ProfileDetail mapRow(ResultSet resultSet, int num){
         try {
             ProfileDetail profileDetail = new ProfileDetail();
-            profileDetail.setProfileId(1);
-            profileDetail.setOtherDetails("nandha detail 1");
+            profileDetail.setProfileId(resultSet.getInt("profileId"));
+            profileDetail.setOtherDetails(resultSet.getString("otherDetails"));
             return profileDetail;
         } catch (Exception e) {
             // TODO: handle exception
