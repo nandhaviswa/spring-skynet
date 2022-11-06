@@ -1,15 +1,14 @@
 package com.skynet.profilemanagement.service;
 
+import com.skynet.profilemanagement.model.ProfileDetail;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.stereotype.Service;
+
 import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import com.skynet.profilemanagement.model.ProfileDetail;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-import org.springframework.stereotype.Service;
 
 @Service
 public class ProfileDetailService {
@@ -33,9 +32,8 @@ public class ProfileDetailService {
             return profileDetail;
         } catch (Exception e) {
             // TODO: handle exception
-            System.out.println(e.getMessage());
         }
-        return null;        
+        return null;
     }
     
 }
