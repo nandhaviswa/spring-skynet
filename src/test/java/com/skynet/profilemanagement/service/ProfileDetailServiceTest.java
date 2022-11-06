@@ -1,6 +1,20 @@
 package com.skynet.profilemanagement.service;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyMap;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.atMostOnce;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.skynet.profilemanagement.model.ProfileDetail;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -12,15 +26,6 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class ProfileDetailServiceTest {
@@ -38,7 +43,6 @@ class ProfileDetailServiceTest {
     @BeforeEach
     void setUp() {
         profileDetailMock = new ProfileDetail();
-        profileDetailMock.setProfileId(1);
         profileDetailMock.setOtherDetails("1");
 
         profileDetailListMock = new ArrayList<>();
@@ -61,10 +65,8 @@ class ProfileDetailServiceTest {
     @DisplayName("Should return profile detail based on result set")
     void mapRow() throws SQLException {
         ResultSet resultSetMock = Mockito.mock(ResultSet.class);
-        when(resultSetMock.getInt(anyString())).thenReturn(profileDetailMock.getProfileId());
         when(resultSetMock.getString(anyString())).thenReturn(profileDetailMock.getOtherDetails());
         ProfileDetail profileDetail = service.mapRow(resultSetMock, 1);
-        assertEquals(profileDetail.getProfileId(), profileDetailMock.getProfileId());
         assertEquals(profileDetail.getOtherDetails(), profileDetailMock.getOtherDetails());
         verify(resultSetMock, atMostOnce()).getInt(anyString());
         verify(resultSetMock, atMostOnce()).getString(anyString());
