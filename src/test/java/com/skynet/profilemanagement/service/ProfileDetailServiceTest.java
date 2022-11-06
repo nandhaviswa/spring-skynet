@@ -3,6 +3,7 @@ package com.skynet.profilemanagement.service;
 import com.skynet.profilemanagement.model.ProfileDetail;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -49,6 +50,7 @@ class ProfileDetailServiceTest {
     }
 
     @Test
+    @DisplayName("Should return profile detail list based on profile id")
     void findAllByProfileId() {
         when(jdbcTemplate.query(anyString(), anyMap(), any(RowMapper.class))).thenReturn(profileDetailListMock);
         assertEquals(profileDetailListMock, service.findAllByProfileId(1));
@@ -56,6 +58,7 @@ class ProfileDetailServiceTest {
     }
 
     @Test
+    @DisplayName("Should return profile detail based on result set")
     void mapRow() throws SQLException {
         ResultSet resultSetMock = Mockito.mock(ResultSet.class);
         when(resultSetMock.getInt(anyString())).thenReturn(profileDetailMock.getProfileId());
